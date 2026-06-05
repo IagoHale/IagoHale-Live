@@ -20,4 +20,4 @@ Assim que você subir as alterações para o repositório no GitHub (na branch `
 3. Em **Build and deployment** -> **Source**, selecione **GitHub Actions**.
 4. O GitHub irá rodar a Action de deploy automaticamente e disponibilizar o link!
 
-Link padrão das páginas: `https://iagohale.github.io/IagoHale-Live/`
+Link padrão das páginas: `https://iagohale.github.io/Live/` (basta renomear o seu repositório no GitHub para `Live` nas configurações do próprio repositório!)
