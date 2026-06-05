@@ -1,0 +1,6 @@
+{
+  "name": "iagohale Stream",
+  "description": "Stream player with Kick and Twitch support",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
