@@ -19,7 +19,7 @@ export default function App() {
       {/* Prettier Header with Custom Background Image */}
       <header 
         className="relative border-b border-gray-800/80 bg-cover bg-center overflow-hidden h-20 md:h-24 flex items-center px-4 md:px-6 shrink-0" 
-        style={{ backgroundImage: "url('/Fundo.webp')" }}
+        style={{ backgroundImage: "url('Fundo.webp')" }}
       >
         {/* Dark overlay for rich contrast and text legibility */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-black/90 backdrop-blur-[1px]" />
@@ -28,7 +28,7 @@ export default function App() {
           {/* Left portion: Logo (replacing text) */}
           <div className="flex w-1/4 min-w-[80px] sm:min-w-[120px] justify-start">
             <img 
-              src="/logo.webp" 
+              src="logo.webp" 
               alt="iagohale logo" 
               className="h-10 md:h-14 w-auto object-contain select-none filter drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]" 
               referrerPolicy="no-referrer"

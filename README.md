@@ -1,20 +1,23 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# iagohale Stream
 
-# Run and deploy your AI Studio app
+Um site simples, leve e moderno para centralizar minhas transmissões com a melhor experiência de visualização.
 
-This contains everything you need to run your app locally.
+## 🚀 Funcionalidades
 
-View your app in AI Studio: https://ai.studio/apps/7443bbeb-0550-4ab6-bf75-820374bbde37
+- **Multi-Player**: Seleção em tempo real entre player da **Kick** (padrão) ou **Twitch**.
+- **Chat Integrado**: Chat da Twitch sempre visível à direita.
+- **Apoio Direto**: Botão "Donate PIX" rápido para apoiar a live via Streamar.
+- **Leve & Otimizado**: Sem animações pesadas, perfeito para rodar direto pelo **GitHub Pages**.
 
-## Run Locally
+## 🛠️ Deploy no GitHub Pages
 
-**Prerequisites:**  Node.js
+Este projeto já está configurado para deploy automático usando **GitHub Actions**.
 
+Assim que você subir as alterações para o repositório no GitHub (na branch `main` ou `master`):
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+1. Vá em **Settings** do seu repositório no GitHub.
+2. No menu lateral, acesse **Pages**.
+3. Em **Build and deployment** -> **Source**, selecione **GitHub Actions**.
+4. O GitHub irá rodar a Action de deploy automaticamente e disponibilizar o link!
+
+Link padrão das páginas: `https://iagohale.github.io/IagoHale-Live/`
