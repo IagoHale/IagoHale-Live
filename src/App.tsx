@@ -4,8 +4,7 @@
  */
 
 import { useState, useEffect } from 'react';
-import { Twitch, Tv, Heart, Settings } from 'lucide-react';
-import logoImage from './logo.webp';
+import { Twitch, Tv, Heart, Settings, X } from 'lucide-react';
 
 export default function App() {
   const [platform, setPlatform] = useState<'kick' | 'twitch'>('kick');
@@ -31,7 +30,7 @@ export default function App() {
     : `https://player.twitch.tv/?channel=iagohale&parent=${hostname}`;
 
   const chatSrc = chatPlatform === 'twitch'
-    ? `https://www.twitch.tv/embed/iagohale/chat?parent=${hostname}&darkpopout=true`
+    ? `https://www.twitch.tv/embed/iagohale/chat?parent=${hostname}&theme=dark&darkpopout=true`
     : `https://kick.com/popout/iagohale/chat`;
 
   return (
@@ -52,7 +51,7 @@ export default function App() {
               />
             )}
             <img 
-              src={logoImage} 
+              src="/logo.webp" 
               alt="iagohale logo" 
               className="h-10 md:h-14 w-auto object-contain select-none filter drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]" 
               referrerPolicy="no-referrer"
@@ -65,7 +64,7 @@ export default function App() {
               <button 
                 onClick={() => setPlatform('kick')}
                 className={`flex items-center gap-1.5 md:gap-2 px-3 md:px-5 py-2 rounded-lg text-xs md:text-sm font-bold transition-all duration-150 cursor-pointer select-none ${
-                  platform === 'kick' 
+                   platform === 'kick' 
                     ? 'bg-[#10b981] text-white shadow-lg shadow-[#10b981]/20' 
                     : 'text-gray-400 hover:text-white hover:bg-white/5'
                 }`}
@@ -90,7 +89,7 @@ export default function App() {
           {/* Right portion: Donate PIX Button and Settings */}
           <div className="flex w-1/4 min-w-[80px] sm:min-w-[120px] justify-end items-center gap-2">
             <a 
-              href="https://www.streamar.com.br/iagohale"
+               href="https://www.streamar.com.br/iagohale"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 md:gap-2 px-3 md:px-4 py-2 md:py-2.5 rounded-lg text-xs md:text-sm font-bold bg-[#1D9A8D] hover:bg-[#188075] text-white transition-colors duration-150 shadow-md shadow-[#1D9A8D]/10 cursor-pointer select-none shrink-0"
@@ -100,62 +99,15 @@ export default function App() {
               <span className="sm:hidden text-white">PIX</span>
             </a>
 
-            {/* Custom Interactive Settings dropdown - Just the gear icon */}
-            <div className="relative shrink-0">
+            {/* Custom Interactive Settings - Just the gear icon */}
+            <div className="shrink-0">
               <button 
-                onClick={() => setShowSettings(!showSettings)}
+                onClick={() => setShowSettings(true)}
                 className="flex items-center justify-center p-2.5 md:p-3 rounded-lg bg-gray-800 hover:bg-gray-700 text-white border border-gray-700/80 transition-colors duration-150 cursor-pointer select-none"
                 title="Configurações de Chat"
               >
                 <Settings className="w-3.5 h-3.5 md:w-4 md:h-4 text-white" />
               </button>
-              
-              {showSettings && (
-                <div className="absolute right-0 mt-2 w-56 bg-gray-900 border border-gray-800 rounded-xl shadow-2xl z-50 p-4">
-                  <h3 className="text-xs font-bold text-gray-400 presets uppercase tracking-wider mb-3">
-                    Opções da página
-                  </h3>
-                  
-                  <div className="space-y-4">
-                    {/* Chat selection switcher */}
-                    <div>
-                      <span className="block text-xs text-gray-300 font-semibold mb-2">
-                        Plataforma do Chat
-                      </span>
-                      <div className="grid grid-cols-2 gap-1.5 bg-gray-950 p-1 rounded-lg border border-gray-800">
-                        <button
-                          onClick={() => {
-                            setChatPlatform('twitch');
-                            setShowSettings(false);
-                          }}
-                          className={`flex items-center justify-center gap-1.5 py-1.5 rounded-md text-xs font-semibold cursor-pointer select-none ${
-                            chatPlatform === 'twitch'
-                              ? 'bg-[#9146FF] text-white font-bold'
-                              : 'text-gray-400 hover:text-white hover:bg-white/5'
-                          }`}
-                        >
-                          <Twitch className="w-3.5 h-3.5 text-white" />
-                          <span className="text-white">Twitch</span>
-                        </button>
-                        <button
-                          onClick={() => {
-                            setChatPlatform('kick');
-                            setShowSettings(false);
-                          }}
-                          className={`flex items-center justify-center gap-1.5 py-1.5 rounded-md text-xs font-semibold cursor-pointer select-none ${
-                            chatPlatform === 'kick'
-                              ? 'bg-[#10b981] text-white font-bold'
-                              : 'text-gray-400 hover:text-white hover:bg-white/5'
-                          }`}
-                        >
-                          <Tv className="w-3.5 h-3.5 text-white" />
-                          <span className="text-white">Kick</span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
             </div>
 
           </div>
@@ -183,6 +135,79 @@ export default function App() {
           />
         </aside>
       </main>
+
+      {/* Premium Centered Modular Settings View - Prevents obscuring Twitch chat iframe */}
+      {showSettings && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          {/* Backdrop with elegant blur */}
+          <div 
+            className="absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity"
+            onClick={() => setShowSettings(false)}
+          />
+          
+          {/* Modal Container */}
+          <div className="relative w-full max-w-sm scale-100 rounded-2xl border border-gray-800 bg-gray-900 p-6 shadow-2xl transition-all duration-200">
+            {/* Header */}
+            <div className="flex items-center justify-between mb-5">
+              <h3 className="text-sm font-extrabold text-gray-200 uppercase tracking-wider">
+                Configurações da Página
+              </h3>
+              <button 
+                onClick={() => setShowSettings(false)}
+                className="p-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-400 hover:text-white transition-colors cursor-pointer"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+            
+            {/* Content */}
+            <div className="space-y-4">
+              <div>
+                <span className="block text-xs text-gray-400 font-semibold mb-2.5">
+                  Alternar Plataforma do Chat
+                </span>
+                <div className="grid grid-cols-2 gap-2 bg-gray-950 p-1.5 rounded-xl border border-gray-800">
+                  <button
+                    onClick={() => {
+                      setChatPlatform('twitch');
+                      setShowSettings(false);
+                    }}
+                    className={`flex items-center justify-center gap-2 py-2.5 rounded-lg text-xs font-bold cursor-pointer transition-all ${
+                      chatPlatform === 'twitch'
+                        ? 'bg-[#9146FF] text-white shadow-md shadow-[#9146FF]/20'
+                        : 'text-gray-400 hover:text-white hover:bg-white/5'
+                    }`}
+                  >
+                    <Twitch className="w-4 h-4 text-white" />
+                    <span>Twitch</span>
+                  </button>
+                  <button
+                    onClick={() => {
+                      setChatPlatform('kick');
+                      setShowSettings(false);
+                    }}
+                    className={`flex items-center justify-center gap-2 py-2.5 rounded-lg text-xs font-bold cursor-pointer transition-all ${
+                      chatPlatform === 'kick'
+                        ? 'bg-[#10b981] text-white shadow-md shadow-[#10b981]/20'
+                        : 'text-gray-400 hover:text-white hover:bg-white/5'
+                    }`}
+                  >
+                    <Tv className="w-4 h-4 text-white" />
+                    <span>Kick</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            {/* Footer info */}
+            <div className="mt-6 pt-4 border-t border-gray-800/60 flex justify-center">
+              <span className="text-[10px] font-mono text-gray-500">
+                iagohale multi-stream • v1.3.0
+              </span>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
