@@ -5,6 +5,7 @@
 
 import { useState, useEffect } from 'react';
 import { Twitch, Tv, Heart, Settings } from 'lucide-react';
+import logoImage from './logo.webp';
 
 export default function App() {
   const [platform, setPlatform] = useState<'kick' | 'twitch'>('kick');
@@ -30,7 +31,7 @@ export default function App() {
     : `https://player.twitch.tv/?channel=iagohale&parent=${hostname}`;
 
   const chatSrc = chatPlatform === 'twitch'
-    ? `https://www.twitch.tv/embed/iagohale/chat?parent=${hostname}&theme=dark`
+    ? `https://www.twitch.tv/embed/iagohale/chat?parent=${hostname}&darkpopout=true`
     : `https://kick.com/popout/iagohale/chat`;
 
   return (
@@ -51,7 +52,7 @@ export default function App() {
               />
             )}
             <img 
-              src="logo.webp" 
+              src={logoImage} 
               alt="iagohale logo" 
               className="h-10 md:h-14 w-auto object-contain select-none filter drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]" 
               referrerPolicy="no-referrer"
