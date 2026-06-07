@@ -51,7 +51,7 @@ export default function App() {
               />
             )}
             <img 
-              src="/logo.webp" 
+              src="logo.webp" 
               alt="iagohale logo" 
               className="h-10 md:h-14 w-auto object-contain select-none filter drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]" 
               referrerPolicy="no-referrer"
